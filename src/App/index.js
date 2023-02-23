@@ -56,26 +56,43 @@ function App(props) {
               />
           </TodoHeader>
           
-          <TodoList>
+          <TodoList
 
-              {error && <TodosError />}
-              {loading && <TodosLoading />}
-              {//sino está cargando, y ya traje la lista
-                  (!loading && !searchedTodos.length) && <EmptyTodos />
-              }
+            error = {error}
+            loading = {loading}
+            searchedTodos = {searchedTodos}
+            totalTodos = {totalTodos}
+            searchText = {searchValue}
 
-              {/* list searched todos */}
-              {searchedTodos.map(todo => (
-                  <TodoItem 
-                      key={todo.text} 
-                      text={todo.text}
-                      completed={todo.completed}
-                      onComplete = {() => completeTodo(todo.text)}
-                      onDelete = { () => deleteTodo(todo.text)}
-                  />
-              )
-              )} 
-          </TodoList>
+            onError = { () => <TodosError/> }
+            onLoading = { () => <TodosLoading/> }
+
+            onEmptyTodos = { () => <EmptyTodos />}
+            OnEmptySearchResults = { 
+              (searchText) => <p> No hay resultados para {searchText}</p>
+            }
+
+            render = { (todo) => (
+                    <TodoItem 
+                        key={todo.text} 
+                        text={todo.text}
+                        completed={todo.completed}
+                        onComplete = {() => completeTodo(todo.text)}
+                        onDelete = { () => deleteTodo(todo.text)}
+                    />
+                )}
+            
+            >
+              {/* { (todo) => (
+                    <TodoItem 
+                        key={todo.text} 
+                        text={todo.text}
+                        completed={todo.completed}
+                        onComplete = {() => completeTodo(todo.text)}
+                        onDelete = { () => deleteTodo(todo.text)}
+                    />
+                )} */}
+            </TodoList>
 
           <CreateTodoButton
               setOpenModal= {setOpenModal}
