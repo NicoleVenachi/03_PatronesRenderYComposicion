@@ -3,7 +3,7 @@ import React from 'react'
 //import { TodoContext } from '../TodoContext'
 import './TodoSearch.css'
 
-function TodoSearch({searchValue, setSearchState}) {
+function TodoSearch({searchValue, setSearchState, loading}) {
 
     //const {searchValue, setSearchState} = React.useContext(TodoContext)
     
@@ -18,6 +18,8 @@ function TodoSearch({searchValue, setSearchState}) {
             placeholder="Search any todo..."
             value = {searchValue}
             onChange={onSearchValueChange}
+
+            disabled = {loading}
         />
         
     );
