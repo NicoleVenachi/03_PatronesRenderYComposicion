@@ -15,7 +15,7 @@ function ChangeAlert({sincronize}) {
                     <p> Would you like to sync them again? </p>
                     <button
                         className="TodoForm-button TodoForm-button--add"
-                        ///si le hacen click, cambio el setter
+                        //si le hacen click, cambio el setter
                         onClick={toggleShow}
                     > Refresh the info </button>
                 </div>
