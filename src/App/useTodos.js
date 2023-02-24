@@ -15,7 +15,8 @@ function useTodos(props) {
     item: todos, 
     saveItem: saveTodos, 
     loading,
-    error
+    error,
+    sincronizeItem: sincronizeTodos
 
     } = useLocalStorage('TODOS_V1', []);
     // le paso el nombre del elemento a almacenar y su estructura de datos (vacia o inicail)
@@ -126,6 +127,8 @@ function useTodos(props) {
         
         openModal,
         setOpenModal,
+
+        sincronizeTodos
 
     }
             

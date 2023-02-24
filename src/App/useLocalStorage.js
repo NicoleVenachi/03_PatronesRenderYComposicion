@@ -5,6 +5,10 @@ function useLocalStorage(itemName, initialValue) {
     //*****Estados
     const [item, setItem] = React.useState(initialValue);
 
+    //estado para sincrinizar el valor del localStorage
+    //sicronizados con todaas las pestañas del navegador
+    const [sicronizedItem, setSincronizedItem] = React.useState(true)
+
     //empiezo loading como true y error como false
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(false);
@@ -34,12 +38,19 @@ function useLocalStorage(itemName, initialValue) {
 
             setItem(parserdItem);
             setLoading(false)
+
+
+            ///si sale bien, estoy sincro
+            setSincronizedItem(true)
             
         } catch (err) {
             setError(err)
         }
         }, 2000);
-    })
+
+        //sino estoy sincronizado carga de nuevo la data del local
+        //re renderizando toda la app, todos los compnentes del padre
+    }, [sicronizedItem])
 
 
     //***** Local persisntence, SAVVE*/
@@ -55,12 +66,21 @@ function useLocalStorage(itemName, initialValue) {
         
     }
 
+    //creo funcion para activar sincronizacion
+    const sincronizeItem = () => {
+        //rengo que hacer loading de nuevo
+        setLoading(true)
+        // y que se ponga como sincronizado
+        setSincronizedItem(false)
+    }
+
     // ***Return
     return {
         item,
         saveItem,
         loading,
-        error
+        error,
+        sincronizeItem
     }
 }
   

@@ -20,6 +20,8 @@ import { EmptyTodos } from '../EmptyTodos';
 
 import {TodoHeader} from '../TodoHeader';
 
+import { ChangeAlert } from '../ChangeAlert';
+
 
 function App(props) {
   //traigo elementos del estado
@@ -38,7 +40,8 @@ function App(props) {
     searchValue, 
     setSearchState,
 
-    addTodo
+    addTodo,
+    sincronizeTodos
   } = useTodos()
 
   return (
@@ -111,6 +114,14 @@ function App(props) {
                   </Modal>
               )
           }
+
+          {/* <ChangeAlertwithStorageListener
+            sincronize = {sincronizeTodos}
+          /> */}
+
+        <ChangeAlert
+            sincronize = {sincronizeTodos}
+          />
       </React.Fragment>
   );
   

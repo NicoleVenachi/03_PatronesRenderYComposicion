@@ -18,8 +18,8 @@ function TodoList(props) {
                 //renderizado del contenido habitual
                 //recorre todos los elemenots buscados y los muestra
                 
-                //por cada elemnto llama esa funcion
-                props.searchedTodos.map(renderFunc)
+                //por cada elemnto llama esa funcion, sino hay errores y sino estoy cargando
+                (!props.loading && !props.error) && props.searchedTodos.map(renderFunc)
             }
 
             {
